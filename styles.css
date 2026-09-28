@@ -58,7 +58,13 @@ button{cursor:pointer}
 .gold-btn:hover{background:var(--gold);color:#24101f}
 .btn-arrow{margin-left:20px}
 
+#preloader .preloader-inner {
+  pointer-events: none;
+}
 
+#preloader #openInvitation {
+  pointer-events: auto;
+}
 
 /* =========================================
    BLUSH-PINK VELVET CURTAIN
