@@ -36,13 +36,33 @@
     }, duration + 800);
   }
 
-  if (openBtn) {
-    openBtn.addEventListener("click", () => {
-      openBtn.disabled = true;
-      preloader.classList.add("hide");
-      setTimeout(animateCurtain, 180);
-    });
-  }
+  function openWeddingInvitation() {
+  if (!openBtn || openBtn.disabled) return;
+
+  openBtn.disabled = true;
+
+  // Start wedding music after user interaction
+  startMusic();
+
+  preloader.classList.add("hide");
+
+  setTimeout(animateCurtain, 180);
+}
+
+// Existing button
+if (openBtn) {
+  openBtn.addEventListener("click", openWeddingInvitation);
+}
+
+// Make the entire invitation card clickable
+if (preloader) {
+  preloader.addEventListener("click", (event) => {
+    // Ignore clicks on the button itself because it already handles the action
+    if (event.target.closest("#openInvitation")) return;
+
+    openWeddingInvitation();
+  });
+}
 
   // Scroll-based reveal engine
   function startReveals() {
